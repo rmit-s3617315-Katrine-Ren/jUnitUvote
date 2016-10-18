@@ -193,7 +193,8 @@ public class uVoteSimulater {
 	ArrayList<Vote> chose3rdCandidates =  new ArrayList<Vote>();
 	ArrayList<Vote> chose4thCandidates =  new ArrayList<Vote>();
 	
-	
+	@Before
+	public static void setUpBeforeClass() throws Exception {
 	
 	Database.listOfVoters.add(new Voter(352311, "s043"));
 	Database.listOfVoters.add(new Voter(321342, "e938"));
@@ -292,10 +293,37 @@ public class uVoteSimulater {
 		
 	}
 	
+	//Test info of Candidate
 	@Test
-	// Test castVote()
-	// Check if the system can run checkInput() when the input is invalid
-	public void testTrueFalse() {
+	public void testCandidate(){
+	assertEquals(4, listOfCandidates.size());
+        assertEquals(12, vote1stCount);
+        assertTrue(listOfCandidate.contains(352111));
+        assertFalse(listOfCandidates.isEmpty());
+	}
+	
+	Test info of voter
+	@Test 
+	public void testVoter(){
+	assertFalse(listOfVoters.isEmpty());
+	assertEquals(4, listOfVoters.size());
+	
+	Voter[] expected={356837, "j942"}
+        assertEquals(expected, GetlistOfVoters(3));
+	
+     	Database.listOfVoters.add(new Voter(245678, "a012"));
+	assertEquals(5, listOfVoters.size());
+        
+	}
+	
+	//Test a method which has not been created
+	@Test 
+	public void getReportByStation(){
+	
+	fail("Not start coding yet");
+	
+	}
+	
 	
 	
 
