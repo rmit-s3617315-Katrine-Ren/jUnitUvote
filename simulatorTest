@@ -1,3 +1,8 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import java.util.*;
 
 public class uVoteSimulater {
@@ -10,6 +15,7 @@ public class uVoteSimulater {
 	int vote3rdCount = 0;
 	int vote4thCount = 0;
 
+	@BeforeClass
 	
 	public void run(){
 		
@@ -177,6 +183,8 @@ public class uVoteSimulater {
 	private static void authorizeManager(){
 		
 	}
+	
+	
 
 	private static void caculatevote(){
 
@@ -283,6 +291,17 @@ public class uVoteSimulater {
 	public void getvotCount(){
 		
 	}
+	
+	@Test
+	// Test castVote()
+	// Check if the system can run checkInput() when the input is invalid
+	public void testTrueFalse() {
+	
+	
+
+	
+	
+	
 	
 	
 
