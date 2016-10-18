@@ -1,0 +1,292 @@
+import java.util.*;
+
+public class uVoteSimulater {
+	
+	Scanner scan = new Scanner(System.in);
+	int input;
+	private boolean error;
+	int vote1stCount = 0;
+	int vote2ndCount = 0;
+	int vote3rdCount = 0;
+	int vote4thCount = 0;
+
+	
+	public void run(){
+		
+		menu();
+		
+		while (true){
+
+				System.out.print("\nPlease enter your input: ");
+				checkInput();
+
+				if(input == 1){
+					System.out.println("LOADING...");
+					authorizeVoter();
+					nextchoose();
+					
+					
+
+	
+				}else if(input == 2){
+					authorizeElectionOfficial();
+				}else if(input == 3){
+					authorizeManager();
+				}
+			}
+
+	}
+		
+		
+	public void nextchoose(){
+		
+		System.out.println("1. Start to vote the candidates in R.M.I.T");
+		System.out.println("2. View the report in cadidate level from R.M.I.T");
+		System.out.println("3. Exit");
+		
+		System.out.print("\nPlease enter your input: ");
+		checkInput();
+		
+		if (input == 1)
+			castvote();
+			
+		else if (input == 2)
+			caculatevote();
+			
+		else if(input == 3)
+			System.exit(0);
+	
+	}
+	
+	public void castvote(){
+		
+		System.out.println("\n\n------------------------------------------");
+		System.out.println("Please choose the candidate what you like!");
+		System.out.println("------------------------------------------\n");
+		System.out.println("1. Sebastian");
+		System.out.println("2. Geng");
+		System.out.println("3. Kaixin");	
+		System.out.println("4. Meng");
+		
+		System.out.print("\nPlease enter your input: ");
+		checkInput();
+		
+		if (input == 1){
+			vote1stCount++;
+			System.out.println("\n------------------------");
+			System.out.println("Thx for your participate");
+			System.exit(0);
+			
+		}else if (input == 2){
+			vote2ndCount++;
+			System.out.println("\n------------------------");
+			System.out.println("Thx for your participate");
+			System.exit(0);
+			
+		}else if(input == 3){
+			vote3rdCount++;
+			System.out.println("\n------------------------");
+			System.out.println("Thx for your participate");
+			System.exit(0);
+		
+		}else if(input == 4){
+			vote4thCount++;
+			System.out.println("\n------------------------");
+			System.out.println("Thx for your participate");
+			System.exit(0);
+			
+		}else
+			System.exit(0);
+		
+		
+	}
+	
+	
+		
+	private void checkInput(){
+		
+		
+	  do{
+		try{
+			int instruction = scan.nextInt();
+			input = instruction;
+			if(input>0 && input <=5){
+				error = false;
+			}else 
+			{
+				System.out.print("\nInput error!!!\n"
+						+"Please input number again : ");
+				error = true;
+			}
+		}
+		catch(java.util.InputMismatchException e){
+			System.out.println("\nInput error!!!\n"
+					+"Please input number again : ");
+			scan.next();
+			
+			error = true;
+		}
+	  }while(error);
+	}
+	
+
+	
+	private void menu(){
+		
+		System.out.println("\nWelecom to our uVote System 1.0\n");
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");
+		System.out.println("Now our system has been opened!");
+		System.out.println("You can start to your journey!!");
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------\n");
+		
+		
+		System.out.println("Please choose your way to login\n");
+		System.out.println("1. Login as a voter.");
+		System.out.println("2. Login as a Electon official.");
+		System.out.println("3. Login as a Election Manager.");
+		System.out.println("4. exit.");
+		
+	}
+	
+	
+
+	public void authorizeVoter(){
+		
+		boolean valid;
+		String b;
+		do{
+			valid = true;
+			System.out.print("\nPlease enter your votingkey: ");
+			b = scan.nextLine();
+			
+			if(!b.equals("a123")){
+				System.out.print("invaild votingkey!\n");
+				valid = false;
+			}
+		}while(!valid);
+		System.out.println("Verify successfully!!!\n");
+			
+	}
+	
+	private static void authorizeElectionOfficial(){
+		
+	}
+	
+	private static void authorizeManager(){
+		
+	}
+
+	private static void caculatevote(){
+
+	ArrayList<Vote> choselstCandidates =  new ArrayList<Vote>();
+	ArrayList<Vote> chose2ndCandidates =  new ArrayList<Vote>();
+	ArrayList<Vote> chose3rdCandidates =  new ArrayList<Vote>();
+	ArrayList<Vote> chose4thCandidates =  new ArrayList<Vote>();
+	
+	
+	
+	Database.listOfVoters.add(new Voter(352311, "s043"));
+	Database.listOfVoters.add(new Voter(321342, "e938"));
+	Database.listOfVoters.add(new Voter(335336, "y247"));
+	Database.listOfVoters.add(new Voter(356837, "j942"));
+	
+	Database.listOfVotes.add(new Vote(829102, "Seb.Y", "2016-10-01"));
+	Database.listOfVotes.add(new Vote(394682, "Seb.Y", "2016-09-30"));
+	Database.listOfVotes.add(new Vote(493026, "Seb.Y", "2016-08-22"));
+	Database.listOfVotes.add(new Vote(492854, "Seb.Y", "2016-08-25"));
+	Database.listOfVotes.add(new Vote(491654, "Meng.Z", "2016-10-01"));
+	Database.listOfVotes.add(new Vote(231644, "Seb.Y", "2016-09-30"));
+	Database.listOfVotes.add(new Vote(451654, "Seb.Y", "2016-08-22"));
+	Database.listOfVotes.add(new Vote(364497, "Geng,X", "2016-08-25"));
+	Database.listOfVotes.add(new Vote(548236, "Seb.Y", "2016-10-01"));
+	Database.listOfVotes.add(new Vote(984315, "Kaixin.R", "2016-09-30"));
+	Database.listOfVotes.add(new Vote(364159, "Seb.Y", "2016-08-22"));
+	Database.listOfVotes.add(new Vote(315698, "Seb.Y", "2016-08-25"));
+	Database.listOfVotes.add(new Vote(156489, "Kaixin.R", "2016-10-01"));
+	Database.listOfVotes.add(new Vote(324597, "Seb.Y", "2016-09-30"));
+	Database.listOfVotes.add(new Vote(326498, "Seb.Y", "2016-08-22"));
+	Database.listOfVotes.add(new Vote(654863, "Seb.Y", "2016-08-25"));
+	
+
+	Database.listOfCandidates.add(new Candidate(352111, "Seb.Y", "RMIT", "ABC"));
+	Database.listOfCandidates.add(new Candidate(364342, "Geng,X", "RMIT", "SUN"));
+	Database.listOfCandidates.add(new Candidate(335226, "Kaixin.R", "RMIT", "TNT"));
+	Database.listOfCandidates.add(new Candidate(352437, "Meng.Z", "RMIT", "VIC"));
+	
+	Database.listOfElectionOfficials.add(new ElectionOfficial(359011, "Peter", "supershit"));
+	Database.listOfElectionOfficials.add(new ElectionOfficial(352641, "John", "lowshit"));
+	Database.listOfElectionMangers.add(new ElectionManger(3521449, "Sebastian", "victory"));
+	
+
+	
+
+	
+
+	choselstCandidates = Database.GetListOfVotes();
+	int a;	 
+	int vote1stCount = 0;
+	
+	for (a = 0; a < choselstCandidates.size(); a++){
+		if(choselstCandidates.get(a).getCandName() == "Seb.Y"){
+		vote1stCount++;
+		}
+	}
+
+	
+	chose2ndCandidates = Database.GetListOfVotes();
+	int b;	 
+	int vote2ndCount = 0;
+	
+	for (b = 0; b < chose2ndCandidates.size(); b++){
+		if(chose2ndCandidates.get(b).getCandName() == "Geng,X"){
+		vote2ndCount++;
+		}
+	}
+	
+	chose3rdCandidates = Database.GetListOfVotes();
+	int c;	 
+	int vote3rdCount = 0;
+	
+	for (c = 0; c < chose3rdCandidates.size(); c++){
+		if(chose3rdCandidates.get(c).getCandName() == "Kaixin.R"){
+		vote3rdCount++;
+		}
+	}
+	
+	chose4thCandidates = Database.GetListOfVotes();
+	int d;	 
+	int vote4thCount = 0;
+	
+	for (d = 0; d < chose4thCandidates.size(); d++){
+		if(chose4thCandidates.get(d).getCandName() == "Meng.Z"){
+		vote4thCount++;
+		}
+	}
+	
+	System.out.println("\n\n------------------------------------------");
+	System.out.println("The report in cadidate level from R.M.I.T");
+	System.out.println("------------------------------------------\n");
+	System.out.println("Sebastian got "+ vote1stCount + " votes");
+	System.out.println("Geng got "+ vote2ndCount + " votes");
+	System.out.println("Kaixin got "+ vote3rdCount + " votes");
+	System.out.println("Meng got "+ vote4thCount + " votes");
+	
+
+	
+	
+
+	}
+	
+
+	public void getvotCount(){
+		
+	}
+	
+	
+
+	
+	
+	
+}
